@@ -28,7 +28,7 @@ export default function Buttons() {
           </Link>
           <Link href='/sign-up'>
             <button
-              className={`border border-[#FF3366] p-[8px] px-6 text-sm text-[#FF3366] hover:bg-[#ff3366] hover:text-white rounded-md`}
+              className={` max-sm:w-full border border-[#FF3366] p-[8px] px-6 text-sm text-[#FF3366] hover:bg-[#ff3366] hover:text-white rounded-md`}
             >
               Sign Up
             </button>
