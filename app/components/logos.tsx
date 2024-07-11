@@ -9,7 +9,7 @@ function Logo() {
           </div>
           <div className="flex gap-1 text-[19px]">
               <span className={`font-bold text-[#FF3366]`}>Snippet</span>
-              <span className='text-white-600'>Bro</span>
+              <span className='text-slate-600'>Bro</span>
           </div>
       </div>
     )
