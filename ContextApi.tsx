@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState } from "react";
 import BorderAllIcon from "@mui/icons-material/BorderAll";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import LogoutIcon from '@mui/icons-material/Logout';
 interface GlobalContextType {
 	sideBarMenuObject: {
 		sideBarMenu:SideBarMenu[];
@@ -48,6 +49,12 @@ export default function GlobalContextProvider({
             name: "Trash",
             isSelected: false,
             icons: <DeleteOutlineOutlinedIcon sx={{ fontSize: 18 }}/>,
+        },
+        {
+            id: 4,
+            name: "Log Out",
+            isSelected: false,
+            icons: <LogoutIcon sx={{ fontSize: 18 }}/>,
         },
     ]);
     return (
