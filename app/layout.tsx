@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import GlobalContextProvider from "@/ContextApi";
 
 //poppins instead of inter
 const poppins = Poppins({
@@ -24,7 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <ClerkProvider>
-          {children}
+          <GlobalContextProvider>
+            {children}
+          </GlobalContextProvider>
         </ClerkProvider>
         </body>
     </html>

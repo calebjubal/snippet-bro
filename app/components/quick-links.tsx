@@ -1,27 +1,41 @@
-import BorderAllIcon from '@mui/icons-material/BorderAll'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
+'use client'
+
 import React from 'react'
+import { useGlobalContext } from '@/ContextApi'
 
 export default function QuickLinks() {
+  const {
+    sideBarMenuObject: { sideBarMenu, setSideBarMenu },
+  } = useGlobalContext();
+
+  console.log(sideBarMenu);
+
+  function clickedMenu(index: number) {
+    const updatedSideBarMenu = sideBarMenu.map((menu, i) => {
+      if (i === index) {
+        return { ...menu, isSelected: true };
+      } else {
+        return { ...menu, isSelected: false };
+      }
+    });
+
+    setSideBarMenu(updatedSideBarMenu);
+  }
+
   return (
     <div className='mt-20 text-sm'>
       <div className='text-slate-400 font-bold'>Quick Links</div>
       <ul className='text-slate-400 mt-4 flex flex-col gap-2'>
-        <li className='flex gap-1 items-center bg-primary text-white p-[7px] px-2 rounded-md w-[60%]'>
-            <BorderAllIcon sx={{ fontSize: 18 }} />
-            <span>All Snippets</span>
-        </li>
-
-        <li className='flex gap-1 items-center hover:bg-primary hover:text-white p-[7px] px-2 rounded-md w-[60%]'>
-            <FavoriteBorderIcon sx={{ fontSize: 18 }} />
-            <span>Favorites</span>
-        </li>
-
-        <li className='flex gap-1 items-center hover:bg-primary hover:text-white p-[7px] px-2 rounded-md w-[60%]'>
-            <DeleteOutlineOutlinedIcon sx={{ fontSize: 18 }} />
-            <span>Trash</span>
-        </li>
+        {sideBarMenu.map((menu, index) => (
+          <li
+            key={index}
+            onClick={() => clickedMenu(index)}
+            className={`flex items-center gap-1 ${menu.isSelected ? "bg-primary text-white" : "text-slate-400 hover:bg-primary hover:text-white"} p-[7px] px-2 rounded-md cursor-pointer select-none`}
+          >
+            {menu.icons}
+            <span>{menu.name}</span>
+          </li>
+        ))}
       </ul>
     </div>
   )
