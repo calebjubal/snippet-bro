@@ -2,6 +2,7 @@
 
 import React from 'react'
 import ProfileUser from './Topbar/ProfileUser'
+import SearchBar from './Topbar/SearchBar'
 
 function ContentArea() {
   return (
@@ -17,6 +18,7 @@ function TopBar() {
     return (
       <div className=' rounded-lg flex justify-between items-center bg-white p-3'>
         <ProfileUser />
+        <SearchBar />
       </div>
     )
   }
