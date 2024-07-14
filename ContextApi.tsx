@@ -2,6 +2,8 @@
 
 import React, { createContext, useContext, useState } from "react";
 import BorderAllIcon from "@mui/icons-material/BorderAll";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -10,19 +12,33 @@ interface GlobalContextType {
 		sideBarMenu:SideBarMenu[];
 		setSideBarMenu: React.Dispatch<React.SetStateAction<SideBarMenu[]>>
 	};
+    darkModeObject: {
+		darkMode: DarkModeType[];
+		setDarkMode: React.Dispatch<React.SetStateAction<DarkModeType[]>>
+	};
 }
 
 interface SideBarMenu {
 	id:number
 	name: string;
-	isSelected: Boolean;
+	isSelected: boolean;
 	icons: React.ReactNode;
+}
+
+interface DarkModeType {
+	id:number
+	icon: React.ReactNode;
+	isSelected: boolean;
 }
 
 const ContextProvider = createContext<GlobalContextType>({
 	sideBarMenuObject: {
 		sideBarMenu: [],
 		setSideBarMenu:() => {},
+	},
+    darkModeObject: {
+		darkMode: [],
+		setDarkMode:() => {},
 	},
 });
 
@@ -31,6 +47,7 @@ export default function GlobalContextProvider({
 }:  {
     children: React.ReactNode;
 }) {
+
     const [sideBarMenu, setSideBarMenu] = useState<SideBarMenu[]>([
         {
             id: 1,
@@ -57,9 +74,26 @@ export default function GlobalContextProvider({
             icons: <LogoutIcon sx={{ fontSize: 18 }}/>,
         },
     ]);
+
+    const [darkMode, setDarkMode] = useState<DarkModeType[]>([
+        {
+            id: 1,
+            icon: <LightModeIcon sx={{ fontSize: 18 }} />,
+            isSelected: true,
+        },
+        {
+            id: 2,
+            icon: <DarkModeIcon sx={{ fontSize: 18 }} />,
+            isSelected: false,
+        },
+    ]);
+
     return (
         <ContextProvider.Provider
-            value={{ sideBarMenuObject: { sideBarMenu, setSideBarMenu } }}
+            value={{ 
+                sideBarMenuObject: { sideBarMenu, setSideBarMenu },
+                darkModeObject: { darkMode, setDarkMode }, 
+            }}
         >
             {children}
         </ContextProvider.Provider>

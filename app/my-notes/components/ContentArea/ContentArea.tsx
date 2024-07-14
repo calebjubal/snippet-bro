@@ -3,6 +3,7 @@
 import React from 'react'
 import ProfileUser from './Topbar/ProfileUser'
 import SearchBar from './Topbar/SearchBar'
+import DarkMode from './Topbar/DarkMode'
 
 function ContentArea() {
   return (
@@ -19,6 +20,7 @@ function TopBar() {
       <div className=' rounded-lg flex justify-between items-center bg-white p-3'>
         <ProfileUser />
         <SearchBar />
+        <DarkMode />
       </div>
     )
   }
