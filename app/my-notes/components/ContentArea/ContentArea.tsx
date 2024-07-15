@@ -11,7 +11,7 @@ function ContentArea() {
     darkModeObject: { darkMode },
   } = useGlobalContext();
   return (
-    <div className={`w-[80%] ${darkMode[1].isSelected ? "bg-slate-700" : "bg-slate-100"} p-5`}>
+    <div className={`w-[80%] ${darkMode[1].isSelected ? "bg-slate-700" : "bg-slate-100"} p-5 border-r`}>
       <TopBar />
     </div>
   )
@@ -21,11 +21,11 @@ export default ContentArea
 
 function TopBar() {
     const {
-    darkModeObject: { darkMode },
-  } = useGlobalContext();
+      darkModeObject: { darkMode },
+    } = useGlobalContext();
 
     return (
-      <div className={`${darkMode[1].isSelected ? "bg-slate-700 text-white" : "bg-slate-100"} rounded-lg flex justify-between items-center p-3`}>
+      <div className={`${darkMode[1].isSelected ? "bg-slate-700 text-white" : "bg-slate-100"} rounded-lg flex justify-between items-center p-3 border-r`}>
         <ProfileUser />
         <SearchBar />
         <DarkMode />

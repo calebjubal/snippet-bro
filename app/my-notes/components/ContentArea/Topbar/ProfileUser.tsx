@@ -1,6 +1,6 @@
 "use client"
 
-import { UserButton, useAuth, useUser } from '@clerk/nextjs'
+import { useUser } from '@clerk/nextjs'
 import React from 'react'
 
 function ProfileUser() {
