@@ -15,7 +15,7 @@ function DarkMode() {
             return { ...item, isSelected: false };
           }
         });
-        setDarkMode(updateDarkModeObject);
+        setDarkMode(updateDarkModeObject); 
     }
     
   return (
