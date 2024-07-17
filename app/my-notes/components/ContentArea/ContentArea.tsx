@@ -25,7 +25,7 @@ function TopBar() {
     } = useGlobalContext();
 
     return (
-      <div className={`${darkMode[1].isSelected ? "bg-slate-700 text-white" : "bg-slate-100"} rounded-lg flex justify-between items-center p-3 border-r`}>
+      <div className={`${darkMode[1].isSelected ? "bg-slate-800 text-white" : "bg-white"} rounded-lg flex justify-between items-center p-3 border-r`}>
         <ProfileUser />
         <SearchBar />
         <DarkMode />

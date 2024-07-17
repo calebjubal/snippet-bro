@@ -1,8 +1,7 @@
 "use client";
 
 import { SignIn } from '@clerk/nextjs'
-import { useRouter } from 'next/router';
-import React, { useEffect } from 'react'
+import React from 'react'
 
 const SignInPage = () => {
   return (
