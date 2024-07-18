@@ -30,7 +30,7 @@ export default function QuickLinks() {
           <li
             key={index}
             onClick={() => clickedMenu(index)}
-            className={`flex items-center gap-1 ${menu.isSelected ? "bg-primary text-white" : "text-slate-400 hover:bg-primary hover:text-white"} p-[7px] px-2 rounded-md cursor-pointer select-none`}
+            className={`flex items-center gap-1 ${menu.isSelected ? "bg-primary text-white" : "text-slate-400 hover:bg-primary hover:text-white"} p-[7px] px-2 rounded-md cursor-pointer select-none w-[80%]`}
           >
             {menu.icons}
             <span>{menu.name}</span>

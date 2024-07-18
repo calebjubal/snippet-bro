@@ -12,7 +12,7 @@ function Sidebar() {
 
   return (
     <div 
-      className={` w-[20%] p-5 flex flex-col gap-2 h-screen pt-7 ${darkMode[1].isSelected ? "bg-slate-800" : "bg-white"} `}
+      className={` max-md:hidden pr-10  p-6 flex flex-col gap-2 h-screen pt-7 ${darkMode[1].isSelected ? "bg-slate-800" : "bg-white"} `}
     >
       <Logo />
       <QuickLinks />

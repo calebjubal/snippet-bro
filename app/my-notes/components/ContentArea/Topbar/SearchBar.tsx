@@ -22,7 +22,7 @@ function SearchBar() {
   function AddSnippetButton() {
     return (
       <div 
-        className='absolute flex gap-2 px-3 rounded-3xl bg-primary text-[13px] text-white top-[5px] right-[6px] items-center cursor-pointer select-none'>
+        className='absolute flex gap-1 px-2 p-1 rounded-3xl max-md:px-1 bg-primary text-[13px] text-white top-[6px] right-[6px] items-center cursor-pointer select-none'>
         <div className='font-bold'>+</div>
         <div>Snippet</div>
       </div>

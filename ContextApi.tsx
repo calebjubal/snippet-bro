@@ -16,6 +16,10 @@ interface GlobalContextType {
 		darkMode: DarkModeType[];
 		setDarkMode: React.Dispatch<React.SetStateAction<DarkModeType[]>>
 	};
+    openSideBarObject: {
+		openSideBar: boolean;
+		setOpenSideBar: React.Dispatch<React.SetStateAction<boolean>>
+	};
 }
 
 interface SideBarMenu {
@@ -34,11 +38,15 @@ interface DarkModeType {
 const ContextProvider = createContext<GlobalContextType>({
 	sideBarMenuObject: {
 		sideBarMenu: [],
-		setSideBarMenu:() => {},
+		setSideBarMenu: () => {},
 	},
     darkModeObject: {
 		darkMode: [],
-		setDarkMode:() => {},
+		setDarkMode: () => {},
+	},
+    openSideBarObject: {
+		openSideBar: false,
+		setOpenSideBar: () => {},
 	},
 });
 
@@ -88,11 +96,14 @@ export default function GlobalContextProvider({
         },
     ]);
 
+    const [openSideBar, setOpenSideBar] = useState(false);
+
     return (
         <ContextProvider.Provider
             value={{ 
                 sideBarMenuObject: { sideBarMenu, setSideBarMenu },
                 darkModeObject: { darkMode, setDarkMode }, 
+                openSideBarObject: { openSideBar, setOpenSideBar },
             }}
         >
             {children}
