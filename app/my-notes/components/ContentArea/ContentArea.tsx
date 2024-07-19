@@ -6,6 +6,8 @@ import SearchBar from './Topbar/SearchBar'
 import DarkMode from './Topbar/DarkMode'
 import { useGlobalContext } from '@/ContextApi'
 import SideBarMenuIcon from './Topbar/SideBarMenuIcon'
+import SwiperSelection from './NotesArea/SwipperSection'
+import AllNotesSection from './NotesArea/AllNotesSection'
 
 function ContentArea() {
   const {
@@ -14,6 +16,7 @@ function ContentArea() {
   return (
     <div className={`w-[100%] ${darkMode[1].isSelected ? "bg-slate-700" : "bg-slate-100"} p-5 border-r`}>
       <TopBar />
+      <NotesArea />
     </div>
   )
 }
@@ -21,18 +24,28 @@ function ContentArea() {
 export default ContentArea
 
 function TopBar() {
-    const {
-      darkModeObject: { darkMode },
-    } = useGlobalContext();
+  const {
+    darkModeObject: { darkMode },
+  } = useGlobalContext();
 
-    return (
-      <div className={`${darkMode[1].isSelected ? "bg-slate-800 text-white" : "bg-white"} rounded-lg flex justify-between items-center p-3 border-r`}>
-        <ProfileUser />
-        <SearchBar />
-        <div>
-          <DarkMode />
-          <SideBarMenuIcon />
-        </div>
+  return (
+    <div className={`${darkMode[1].isSelected ? "bg-slate-800 text-white" : "bg-white"} rounded-lg flex justify-between items-center p-3 border-r`}>
+      <ProfileUser />
+      <SearchBar />
+      <div>
+        <DarkMode />
+        <SideBarMenuIcon />
       </div>
-    )
-  }
+    </div>
+  )
+}
+
+function NotesArea() {
+  return (
+    <div className=" mt-5">
+      <SwiperSelection />
+      <AllNotesSection />
+    </div>
+  )
+}
+
