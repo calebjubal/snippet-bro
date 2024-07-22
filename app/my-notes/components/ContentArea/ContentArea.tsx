@@ -8,6 +8,7 @@ import { useGlobalContext } from '@/ContextApi'
 import SideBarMenuIcon from './Topbar/SideBarMenuIcon'
 import SwiperSelection from './NotesArea/SwipperSection'
 import AllNotesSection from './NotesArea/AllNotesSection'
+import ContentNote from '../ContentNote/ContentNote'
 
 function ContentArea() {
   const {
@@ -32,7 +33,7 @@ function TopBar() {
     <div className={`${darkMode[1].isSelected ? "bg-slate-800 text-white" : "bg-white"} rounded-lg flex justify-between items-center p-3 border-r`}>
       <ProfileUser />
       <SearchBar />
-      <div>
+      <div className='flex gap-4 items-center'>
         <DarkMode />
         <SideBarMenuIcon />
       </div>
@@ -41,10 +42,17 @@ function TopBar() {
 }
 
 function NotesArea() {
+  const {
+    openContentNoteObject: { openContentNote }
+  } = useGlobalContext();
+
   return (
-    <div className=" mt-5">
-      <SwiperSelection />
-      <AllNotesSection />
+    <div className="flex gap-2 mt-5  border">
+      <div className={`${openContentNote ? "w-[50%]" : "w-full"}`}>
+        <SwiperSelection />
+        <AllNotesSection />        
+      </div>
+      <ContentNote />
     </div>
   )
 }

@@ -1,15 +1,16 @@
 "use client"
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import BorderAllIcon from "@mui/icons-material/BorderAll";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { DarkModeType, SideBarMenu, SingleNoteType } from "./app/Types";
 interface GlobalContextType {
 	sideBarMenuObject: {
-		sideBarMenu:SideBarMenu[];
+		sideBarMenu: SideBarMenu[];
 		setSideBarMenu: React.Dispatch<React.SetStateAction<SideBarMenu[]>>
 	};
     darkModeObject: {
@@ -20,19 +21,18 @@ interface GlobalContextType {
 		openSideBar: boolean;
 		setOpenSideBar: React.Dispatch<React.SetStateAction<boolean>>
 	};
-}
-
-interface SideBarMenu {
-	id:number
-	name: string;
-	isSelected: boolean;
-	icons: React.ReactNode;
-}
-
-interface DarkModeType {
-	id:number
-	icon: React.ReactNode;
-	isSelected: boolean;
+    openContentNoteObject: {
+		openContentNote: boolean;
+		setOpenContentNote: React.Dispatch<React.SetStateAction<boolean>>
+	};
+    isMobileObject: {
+		isMobile: boolean;
+		setIsMobile: React.Dispatch<React.SetStateAction<boolean>>
+	};
+    allNotesObject: {
+		allNotes: SingleNoteType[];
+		setAllNotes: React.Dispatch<React.SetStateAction<SingleNoteType[]>>
+	};
 }
 
 const ContextProvider = createContext<GlobalContextType>({
@@ -48,6 +48,18 @@ const ContextProvider = createContext<GlobalContextType>({
 		openSideBar: false,
 		setOpenSideBar: () => {},
 	},
+    openContentNoteObject: { 
+        openContentNote: false, 
+        setOpenContentNote: () => {},
+    },
+    isMobileObject: { 
+        isMobile: false, 
+        setIsMobile: () => {},
+    },
+    allNotesObject: { 
+        allNotes: [], 
+        setAllNotes: () => {},
+    },
 });
 
 export default function GlobalContextProvider({
@@ -97,6 +109,23 @@ export default function GlobalContextProvider({
     ]);
 
     const [openSideBar, setOpenSideBar] = useState(false);
+    const [openContentNote, setOpenContentNote] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+    const [allNotes, setAllNotes] = useState<SingleNoteType[]>([]);
+
+    const handleResize = () => {
+        setIsMobile(window.innerWidth <= 640);
+    };
+
+    useEffect(() => {
+        handleResize;
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize)
+        };
+    }, [])
 
     return (
         <ContextProvider.Provider
@@ -104,6 +133,9 @@ export default function GlobalContextProvider({
                 sideBarMenuObject: { sideBarMenu, setSideBarMenu },
                 darkModeObject: { darkMode, setDarkMode }, 
                 openSideBarObject: { openSideBar, setOpenSideBar },
+                openContentNoteObject: { openContentNote, setOpenContentNote },
+                isMobileObject: { isMobile, setIsMobile },
+                allNotesObject: { allNotes, setAllNotes },
             }}
         >
             {children}

@@ -24,19 +24,21 @@ export default AllNotesSection
 
 
 function SingleNote() {
-    const {
-        darkModeObject: { darkMode },
-    } = useGlobalContext();
-    return (
-        <div
-            className={`${darkMode[1].isSelected ? "bg-slate-800 text-white" : "bg-white"} max-sm:w-full  w-[320px] rounded-md py-4`}
-        >
-            <NoteHeader />
-            <NoteDate />
-            <NoteTags />
-            <NoteDescription />
-            <CodeBlock language="javascript" />
-            <NoteFooter />
-        </div>
-    )
+  const {
+      darkModeObject: { darkMode },
+      openContentNoteObject: { openContentNote },
+  } = useGlobalContext();
+
+  return (
+      <div
+          className={`${darkMode[1].isSelected ? "bg-slate-800 text-white" : "bg-white"} ${openContentNote ? "w-full" : "w-[180px]"} max-sm:w-full rounded-md py-4`}
+      >
+          <NoteHeader />
+          <NoteDate />
+          <NoteTags />
+          <NoteDescription />
+          <CodeBlock language="javascript" />
+          <NoteFooter />
+      </div>
+  )
 }
