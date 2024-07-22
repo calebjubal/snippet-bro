@@ -9,7 +9,7 @@ function SearchBar() {
     darkModeObject: { darkMode },
   } = useGlobalContext();
   return (
-    <div className={` ${darkMode[1].isSelected ? "bg-slate-100" : "bg-slate-100"} relative pl-3 w-[60%] h-[30px] rounded-3xl flex items-center gap-2`}>
+    <div className={` ${darkMode[1].isSelected ? "bg-slate-100" : "bg-slate-100"} relative pl-3 p-1 w-[60%] h-[40px] rounded-3xl flex items-center gap-2`}>
       <SearchIcon className='text-primary' sx={{ fontsize: 13 }} />
       <input 
         placeholder='Search a snippet...'

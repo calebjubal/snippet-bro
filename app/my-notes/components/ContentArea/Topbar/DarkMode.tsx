@@ -24,7 +24,7 @@ function DarkMode() {
             {darkMode.map((item, index) => {
                 return (
                     <div 
-                        className={`flex items-center justify-center w-8 h-8 rounded-full cursor-pointer select-none transition-colors duration-300 ${item.isSelected ? "bg-primary text-white shadow-lg" : "bg-slate-100 text-primary hover:bg-primary"}`}
+                        className={`flex items-center justify-center w-8 h-8 rounded-full cursor-pointer select-none transition-colors duration-300 ${item.isSelected ? "bg-primary text-white shadow-lg" : "bg-slate-100 text-primary hover:bg-primary hover:text-white"}`}
                         key={index}
                         onClick={() => handleClickedDarkMode(index)}
                     >
